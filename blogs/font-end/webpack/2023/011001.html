@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vite-plugin  auto import自动按需引入 | Joyxin Blog</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="https://pan.zealsay.com/blog/favicon.ico">
+    <script>
+          var _hmt = _hmt || [];
+          (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b0aae218897fa9d8a9f76e9a77e0b3c6";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+          })();
+        </script>
+    <meta name="description" content="一个只会前端的科班生。">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/G1372-Blog/assets/css/0.styles.def2e7fa.css" as="style"><link rel="preload" href="/G1372-Blog/assets/js/app.8b592d80.js" as="script"><link rel="preload" href="/G1372-Blog/assets/js/5.62d7f641.js" as="script"><link rel="preload" href="/G1372-Blog/assets/js/1.8361764c.js" as="script"><link rel="preload" href="/G1372-Blog/assets/js/18.7b2a2f7b.js" as="script"><link rel="prefetch" href="/G1372-Blog/assets/js/10.accf9c5a.js"><link rel="prefetch" href="/G1372-Blog/assets/js/11.baeba1be.js"><link rel="prefetch" href="/G1372-Blog/assets/js/12.86195b32.js"><link rel="prefetch" href="/G1372-Blog/assets/js/13.48d12d0e.js"><link rel="prefetch" href="/G1372-Blog/assets/js/14.43925569.js"><link rel="prefetch" href="/G1372-Blog/assets/js/15.91fd9014.js"><link rel="prefetch" href="/G1372-Blog/assets/js/16.847ffde3.js"><link rel="prefetch" href="/G1372-Blog/assets/js/17.25bcc967.js"><link rel="prefetch" href="/G1372-Blog/assets/js/19.eaa5e57b.js"><link rel="prefetch" href="/G1372-Blog/assets/js/20.47d25b4e.js"><link rel="prefetch" href="/G1372-Blog/assets/js/3.aafeea81.js"><link rel="prefetch" href="/G1372-Blog/assets/js/4.b724e4be.js"><link rel="prefetch" href="/G1372-Blog/assets/js/6.c299201b.js"><link rel="prefetch" href="/G1372-Blog/assets/js/7.ec79a382.js"><link rel="prefetch" href="/G1372-Blog/assets/js/8.b8cf1c91.js"><link rel="prefetch" href="/G1372-Blog/assets/js/9.da10c9e9.js">
+    <link rel="stylesheet" href="/G1372-Blog/assets/css/0.styles.def2e7fa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-106e3130><div data-v-106e3130><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-106e3130 data-v-106e3130><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4d3be7b7 data-v-106e3130 data-v-106e3130><h3 class="title" style="display:none;" data-v-4d3be7b7 data-v-4d3be7b7>Joyxin Blog</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-4d3be7b7 data-v-4d3be7b7><input type="password" value="" data-v-4d3be7b7> <span data-v-4d3be7b7>Konck! Knock!</span> <button data-v-4d3be7b7>OK</button></label> <div class="footer" style="display:none;" data-v-4d3be7b7 data-v-4d3be7b7><span data-v-4d3be7b7><i class="iconfont reco-theme" data-v-4d3be7b7></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4d3be7b7>vuePress-theme-reco</a></span> <span data-v-4d3be7b7><i class="iconfont reco-copyright" data-v-4d3be7b7></i> <a data-v-4d3be7b7><span data-v-4d3be7b7>Joyxin</span>
+            
+          <span data-v-4d3be7b7>2022 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-106e3130><div data-v-106e3130><div id="smart" class="wrapper-page" style="background-image:url(https://blog.joyxin.top/image/front-end/webpack/webpackToVite.png);background-position-x:center;background-position-y:center;background-size:cover;background-repeat-x:no-repeat;background-repeat-y:no-repeat;" data-v-106e3130><header class="navbar" data-v-106e3130><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/G1372-Blog/" class="home-link router-link-active"><img src="/G1372-Blog/logo.png" alt="Joyxin Blog" class="logo"> <span class="site-name">Joyxin Blog</span></a> <div class="links"><div id="dayNightSwitch" class="generalWrapper" data-v-68728e36><a class="click" data-v-68728e36><div class="onOff daySwitch" data-v-68728e36><div class="star star1" data-v-68728e36></div> <div class="star star2" data-v-68728e36></div> <div class="star star3" data-v-68728e36></div> <div class="star star4" data-v-68728e36></div> <div class="star star5" data-v-68728e36></div> <div class="star sky" data-v-68728e36></div> <div class="sunMoon" data-v-68728e36><div class="crater crater1" data-v-68728e36></div> <div class="crater crater2" data-v-68728e36></div> <div class="crater crater3" data-v-68728e36></div> <div class="cloud part1" data-v-68728e36></div> <div class="cloud part2" data-v-68728e36></div></div></div></a></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/G1372-Blog/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/经验分享/" class="nav-link"><i class="iconfont undefined"></i>
+  经验分享
+</a></li><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/技术笔记/" class="nav-link"><i class="iconfont undefined"></i>
+  技术笔记
+</a></li><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/学习笔记/" class="nav-link"><i class="iconfont undefined"></i>
+  学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/front/" class="nav-link"><i class="iconfont undefined"></i>
+  front
+</a></li></ul></div></div><div class="nav-item"><a href="/G1372-Blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/G1372-Blog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/G1372-Blog/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-106e3130></div> <aside class="sidebar" data-v-106e3130><div class="personal-info-wrapper" data-v-d528efe2 data-v-106e3130><img src="/G1372-Blog/image/profile/first-profile.png" alt="author-avatar" class="personal-img" data-v-d528efe2> <h3 class="name" data-v-d528efe2>
+    Joyxin
+  </h3> <div class="num" data-v-d528efe2><div data-v-d528efe2><h3 data-v-d528efe2>7</h3> <h6 data-v-d528efe2>文章</h6></div> <div data-v-d528efe2><h3 data-v-d528efe2>8</h3> <h6 data-v-d528efe2>标签</h6></div></div> <hr data-v-d528efe2></div> <nav class="nav-links"><div class="nav-item"><a href="/G1372-Blog/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/经验分享/" class="nav-link"><i class="iconfont undefined"></i>
+  经验分享
+</a></li><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/技术笔记/" class="nav-link"><i class="iconfont undefined"></i>
+  技术笔记
+</a></li><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/学习笔记/" class="nav-link"><i class="iconfont undefined"></i>
+  学习笔记
+</a></li><li class="dropdown-item"><!----> <a href="/G1372-Blog/categories/front/" class="nav-link"><i class="iconfont undefined"></i>
+  front
+</a></li></ul></div></div><div class="nav-item"><a href="/G1372-Blog/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/G1372-Blog/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/G1372-Blog/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  关于
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4d3be7b7 data-v-106e3130><h3 class="title" style="display:none;" data-v-4d3be7b7 data-v-4d3be7b7>vite-plugin  auto import自动按需引入</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-4d3be7b7 data-v-4d3be7b7><input type="password" value="" data-v-4d3be7b7> <span data-v-4d3be7b7>Konck! Knock!</span> <button data-v-4d3be7b7>OK</button></label> <div class="footer" style="display:none;" data-v-4d3be7b7 data-v-4d3be7b7><span data-v-4d3be7b7><i class="iconfont reco-theme" data-v-4d3be7b7></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4d3be7b7>vuePress-theme-reco</a></span> <span data-v-4d3be7b7><i class="iconfont reco-copyright" data-v-4d3be7b7></i> <a data-v-4d3be7b7><span data-v-4d3be7b7>Joyxin</span>
+            
+          <span data-v-4d3be7b7>2022 - </span>
+          2023
+        </a></span></div></div></div> <div data-v-106e3130><main class="page" style="padding-right:0;"><div class="page-title" style="display:none;"><h1 class="title">vite-plugin  auto import自动按需引入</h1> <div class="page-info" data-v-04a855f8><i class="iconfont reco-account" data-v-04a855f8><span data-v-04a855f8>Joyxin</span></i> <i class="iconfont reco-date" data-v-04a855f8><span data-v-04a855f8>20223-01-01</span></i> <i class="iconfont reco-eye" data-v-04a855f8><span id="/G1372-Blog/blogs/font-end/webpack/2023/011001.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-04a855f8><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-04a855f8><span class="tag-item" data-v-04a855f8>webpack vite</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="效果预览"><a href="#效果预览" class="header-anchor">#</a> 效果预览</h2> <p>在 vue3 setup 中，不需要 import 即可使用 ref 和 vue 组件，且不报错。</p> <p>其他版本和框架或文件均可</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token keyword">const</span> statusBarHeight <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'44px'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wx<span class="token punctuation">.</span><span class="token function">getSystemInfo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        statusBarHeight<span class="token punctuation">.</span>value <span class="token operator">=</span> res<span class="token punctuation">.</span>statusBarHeight <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>uni<span class="token operator">-</span>nav<span class="token operator">-</span>bar dark <span class="token operator">:</span>fixed<span class="token operator">=</span><span class="token string">&quot;true&quot;</span> shadow background<span class="token operator">-</span>color<span class="token operator">=</span><span class="token string">&quot;#007AFF&quot;</span> status<span class="token operator">-</span>bar left<span class="token operator">-</span>icon<span class="token operator">=</span><span class="token string">&quot;left&quot;</span> left<span class="token operator">-</span>text<span class="token operator">=</span><span class="token string">&quot;返回&quot;</span> title<span class="token operator">=</span><span class="token string">&quot;自定义导航栏&quot;</span> @clickLeft<span class="token operator">=</span><span class="token string">&quot;back&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>uni<span class="token operator">-</span>card is<span class="token operator">-</span>full <span class="token operator">:</span>isShadow<span class="token operator">=</span><span class="token string">&quot;false&quot;</span><span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>text <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;uni-h6&quot;</span><span class="token operator">&gt;</span>自定义组件，并非原生导航栏。除非原生导航栏无法满足需求，否则不推荐使用自定义导航栏组件。<span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span><span class="token operator">/</span>uni<span class="token operator">-</span>card<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre></div><p>使用自动导入插件，共会使用到两个插件 <a href="https://github.com/antfu/unplugin-auto-import" target="_blank" rel="noopener noreferrer">unplugin-auto-import<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 与 <a href="unplugin-vue-components">unplugin-vue-components</a></p> <h2 id="unplugin-auto-import"><a href="#unplugin-auto-import" class="header-anchor">#</a> unplugin-auto-import</h2> <p>使用前</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> computed<span class="token punctuation">,</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> doubled <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> count<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>使用后</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> doubled <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> count<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="下载"><a href="#下载" class="header-anchor">#</a> 下载</h3> <div class="language- extra-class"><pre class="language-text"><code>npm i -D unplugin-auto-import
+</code></pre></div><p>vite 中使用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.js</span>
+<span class="token keyword">import</span> AutoImport <span class="token keyword">from</span> <span class="token string">'unplugin-auto-import/vite'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">/* options */</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>webpack 中使用</p> <div class="language-j's extra-class"><pre class="language-text"><code>// webpack.config.js
+module.exports = {
+  /* ... */
+  plugins: [
+    require('unplugin-auto-import/webpack')({ /* options */ }),
+  ],
+}
+</code></pre></div><h3 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h3> <details class="custom-block details"><summary>官方配置（全）</summary> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.js</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span><span class="token punctuation">,</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">// targets to transform</span>
+      include<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token regex">/\.[tj]sx?$/</span><span class="token punctuation">,</span> <span class="token comment">// .ts, .tsx, .js, .jsx</span>
+        <span class="token operator">/</span>\<span class="token punctuation">.</span>vue$<span class="token operator">/</span><span class="token punctuation">,</span>
+        <span class="token regex">/\.vue\?vue/</span><span class="token punctuation">,</span> <span class="token comment">// .vue</span>
+        <span class="token operator">/</span>\<span class="token punctuation">.</span>md$<span class="token operator">/</span><span class="token punctuation">,</span> <span class="token comment">// .md</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// global imports to register</span>
+      imports<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// presets</span>
+        <span class="token string">'vue'</span><span class="token punctuation">,</span>
+        <span class="token string">'vue-router'</span><span class="token punctuation">,</span>
+        <span class="token comment">// custom</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">'@vueuse/core'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token comment">// named imports</span>
+            <span class="token string">'useMouse'</span><span class="token punctuation">,</span> <span class="token comment">// import { useMouse } from '@vueuse/core',</span>
+            <span class="token comment">// alias</span>
+            <span class="token punctuation">[</span><span class="token string">'useFetch'</span><span class="token punctuation">,</span> <span class="token string">'useMyFetch'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// import { useFetch as useMyFetch } from '@vueuse/core',</span>
+          <span class="token punctuation">]</span><span class="token punctuation">,</span>
+          axios<span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token comment">// default imports</span>
+            <span class="token punctuation">[</span><span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token string">'axios'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// import { default as axios } from 'axios',</span>
+          <span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token string">'[package-name]'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">'[import-names]'</span><span class="token punctuation">,</span>
+            <span class="token comment">// alias</span>
+            <span class="token punctuation">[</span><span class="token string">'[from]'</span><span class="token punctuation">,</span> <span class="token string">'[alias]'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">// Enable auto import by filename for default module exports under directories</span>
+      defaultExportByFilename<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// Auto import for module exports under directories</span>
+      <span class="token comment">// by default it only scan one level of modules under the directory</span>
+      dirs<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// './hooks',</span>
+        <span class="token comment">// './composables' // only root modules</span>
+        <span class="token comment">// './composables/**', // all nested modules</span>
+        <span class="token comment">// ...</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// Filepath to generate corresponding .d.ts file.</span>
+      <span class="token comment">// Defaults to './auto-imports.d.ts' when `typescript` is installed locally.</span>
+      <span class="token comment">// Set `false` to disable.</span>
+      dts<span class="token operator">:</span> <span class="token string">'./auto-imports.d.ts'</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// Auto import inside Vue template</span>
+      <span class="token comment">// see https://github.com/unjs/unimport/pull/15 and https://github.com/unjs/unimport/pull/72</span>
+      vueTemplate<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// Custom resolvers, compatible with `unplugin-vue-components`</span>
+      <span class="token comment">// see https://github.com/antfu/unplugin-auto-import/pull/23/</span>
+      resolvers<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">/* ... */</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// Generate corresponding .eslintrc-auto-import.json file.</span>
+      <span class="token comment">// eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals</span>
+      eslintrc<span class="token operator">:</span> <span class="token punctuation">{</span>
+        enabled<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// Default `false`</span>
+        filepath<span class="token operator">:</span> <span class="token string">'./.eslintrc-auto-import.json'</span><span class="token punctuation">,</span> <span class="token comment">// Default `./.eslintrc-auto-import.json`</span>
+        globalsPropValue<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></details> <p>一般配置</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.js</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">uni</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      imports<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">,</span> <span class="token string">'vue-router'</span><span class="token punctuation">,</span> <span class="token string">'pinia'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 自动导入vue和vue-router相关函数</span>
+      dirs<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// 自动导入以下目录的所有 export</span>
+        <span class="token comment">// ./src/utils/**</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      vueTemplate<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="注意事项"><a href="#注意事项" class="header-anchor">#</a> 注意事项</h3> <h4 id="eslint-报错-变量未定义"><a href="#eslint-报错-变量未定义" class="header-anchor">#</a> <code>eslint</code> 报错：变量未定义</h4> <p>如果项目中使用了 <code>eslint</code> ，因为目录中没有导入相关变量，所以 eslint 会因为检测不到该目录有相关变量导入或定义，导致 <code>no-undef</code> 的报错。</p> <h5 id="解决办法"><a href="#解决办法" class="header-anchor">#</a> 解决办法</h5> <ol><li><p>官方推荐</p> <ol><li>Enable <code>eslintrc.enabled</code></li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  eslintrc<span class="token operator">:</span> <span class="token punctuation">{</span>
+    enabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &lt;-- this</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="2"><li>Update your <code>eslintrc</code>: <a href="https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files" target="_blank" rel="noopener noreferrer">Extending Configuration Files<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// .eslintrc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'./.eslintrc-auto-import.json'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><div class="custom-block tip"><p>使用这种方法，需要确保 <code>vite.config.js</code> 里插件的配置需要有以下的配置项</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.js</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span><span class="token punctuation">,</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      eslintrc<span class="token operator">:</span> <span class="token punctuation">{</span>
+        enabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// true 生成文件</span>
+        filepath<span class="token operator">:</span> <span class="token string">'./.eslintrc-auto-import.json'</span><span class="token punctuation">,</span> <span class="token comment">// 文件的生成路径</span>
+        globalsPropValue<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div></li> <li><p>配置 eslint 规则 （不推荐）</p> <p>直接取消 eslint 对于未定义变量的使用。但这将对导致除自动导入的变量以外的未定义的变量会被错误使用的风险。</p></li></ol> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'no-undef'</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'warn'</span> <span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span> <span class="token comment">// 禁止使用未声明的变量</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="unplugin-vue-components"><a href="#unplugin-vue-components" class="header-anchor">#</a> unplugin-vue-components</h2> <p>使用前</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>HelloWorld msg<span class="token operator">=</span><span class="token string">&quot;Hello Vue 3.0 + Vite&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> HelloWorld <span class="token keyword">from</span> <span class="token string">'./src/components/HelloWorld.vue'</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><p>使用后</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>HelloWorld msg<span class="token operator">=</span><span class="token string">&quot;Hello Vue 3.0 + Vite&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="下载-2"><a href="#下载-2" class="header-anchor">#</a> 下载</h3> <div class="language-js extra-class"><pre class="language-js"><code>npm i unplugin<span class="token operator">-</span>vue<span class="token operator">-</span>components <span class="token operator">-</span><span class="token constant">D</span>
+</code></pre></div><p>Vite 中使用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.ts</span>
+
+<span class="token keyword">import</span> Components <span class="token keyword">from</span> <span class="token string">'unplugin-vue-components/vite'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">Components</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">/* options */</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Webpack 中使用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'unplugin-vue-components/webpack'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">/* options */</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="配置-2"><a href="#配置-2" class="header-anchor">#</a> 配置</h3> <details class="custom-block details"><summary>官方配置（全）</summary> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.js</span>
+
+<span class="token keyword">import</span> Components <span class="token keyword">from</span> <span class="token string">'unplugin-vue-components/vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span><span class="token punctuation">,</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Components</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  		<span class="token comment">// relative paths to the directory to search for components.</span>
+  		dirs<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/components'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+  		<span class="token comment">// valid file extensions for components.</span>
+  		extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  		<span class="token comment">// search for subdirectories</span>
+  		deep<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  		<span class="token comment">// resolvers for custom components</span>
+ 	 	resolvers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+ 	 	<span class="token comment">// generate `components.d.ts` global declarations,</span>
+  		<span class="token comment">// also accepts a path for custom filename</span>
+  		<span class="token comment">// default: `true` if package typescript is installed</span>
+  		dts<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+  		<span class="token comment">// Allow subdirectories as namespace prefix for components.</span>
+	  	directoryAsNamespace<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+	  	<span class="token comment">// Collapse same prefixes (camel-sensitive) of folders and components</span>
+  		<span class="token comment">// to prevent duplication inside namespaced component name.</span>
+  		<span class="token comment">// works when `directoryAsNamespace: true`</span>
+  		collapseSamePrefixes<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  		<span class="token comment">// Subdirectory paths for ignoring namespace prefixes.</span>
+  		<span class="token comment">// works when `directoryAsNamespace: true`</span>
+  		globalNamespaces<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+  		<span class="token comment">// auto import for directives</span>
+  		<span class="token comment">// default: `true` for Vue 3, `false` for Vue 2</span>
+  		<span class="token comment">// Babel is needed to do the transformation for Vue 2, it's disabled by default for performance concerns.</span>
+  		<span class="token comment">// To install Babel, run: `npm install -D @babel/parser`</span>
+  		directives<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+  		<span class="token comment">// Transform path before resolving</span>
+  		<span class="token function-variable function">importPathTransform</span><span class="token operator">:</span> <span class="token parameter">v</span> <span class="token operator">=&gt;</span> v<span class="token punctuation">,</span>
+
+  		<span class="token comment">// Allow for components to override other components with the same name</span>
+  		allowOverrides<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+ 		 <span class="token comment">// filters for transforming targets</span>
+ 		 include<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token regex">/\.vue$/</span><span class="token punctuation">,</span> <span class="token regex">/\.vue\?vue/</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  		exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token regex">/[\\/]node_modules[\\/]/</span><span class="token punctuation">,</span> <span class="token regex">/[\\/]\.git[\\/]/</span><span class="token punctuation">,</span> <span class="token regex">/[\\/]\.nuxt[\\/]/</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+ 		 <span class="token comment">// Vue version of project. It will detect automatically if not specified.</span>
+ 		 <span class="token comment">// Acceptable value: 2 | 2.7 | 3</span>
+ 		 version<span class="token operator">:</span> <span class="token number">2.7</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></details> <p>一般配置（推荐）</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// vite.config.js</span>
+
+<span class="token keyword">import</span> Components <span class="token keyword">from</span> <span class="token string">'unplugin-vue-components/vite'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span><span class="token punctuation">,</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Components</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      dirs<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/components'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 搜索组件目录的相对路径。</span>
+      extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 搜索组件的扩展名</span>
+      deep<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 搜索子目录</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>除了解析自定义的组件之外，该插件也内置了主流组件库也拥有对应的解析器。相关说明可以参照<a href="https://github.com/antfu/unplugin-vue-components#readme" target="_blank" rel="noopener noreferrer">文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <!----></main> <!----></div></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/G1372-Blog/assets/js/app.8b592d80.js" defer></script><script src="/G1372-Blog/assets/js/5.62d7f641.js" defer></script><script src="/G1372-Blog/assets/js/1.8361764c.js" defer></script><script src="/G1372-Blog/assets/js/18.7b2a2f7b.js" defer></script>
+  </body>
+</html>
